@@ -6,15 +6,15 @@
 
 # Creates cmdutils symlink files into your target directory
 
-FILES=( merge.py )
-
 TARGETDIR=~/bin
 
 mkdir -p $TARGETDIR
 
 CURRDIR=$(pwd)
 
-for file in ${FILES[@]}
+for i in *
 do
-	ln -Fsv $CURRDIR/$file $TARGETDIR/$file
+    if [[ $i == "LICENSE" ]] || [[ $i == "INFO.md" ]] || [[ $i == "README.md" ]] || [[ $i == "Makefile" ]]; then continue; fi
+    NAME=$(echo $i | cut -f 1 -d.)
+    ln -Fsv $CURRDIR/$i $TARGETDIR/$NAME
 done

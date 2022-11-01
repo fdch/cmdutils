@@ -7,4 +7,8 @@
 # Makefile for cmdutils
 
 install:
-    ./linker.sh
+	./linker.sh
+
+info:
+	./info.sh
+

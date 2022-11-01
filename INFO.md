@@ -1,7 +1,7 @@
 # Information file for cmdutils
 
 Copyright (C) 2022 Fede Camara Halac
-Tue  1 Nov 2022 12:50:59 CET
+Tue  1 Nov 2022 12:57:58 CET
 
      Name     Env Description
 --------- ------- --------------------------------------------------------------
