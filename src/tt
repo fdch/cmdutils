@@ -9,18 +9,16 @@
 # Change editor here
 TEXTEDITOR="Visual Studio code.app"
 
-if [[ "$1" -eq "-h" ]]
+if [[ ${#@} -eq 0 ]]
+then
+    open -a "$TEXTEDITOR" "."
+elif [[ "$1" == "-h" ]] || [[ "$1" == "--help"  ]]
 then
     echo "usage:"
     echo "tt myfile.txt                open single file"
     echo "tt (or tt .)                 open current directory"
     echo "tt * (or tt file1 file2)     open files in separate windows"
     exit
-fi
-
-if [[ ${#@} -eq 0 ]]
-then
-    open -a "$TEXTEDITOR" "."
 else
     for FILES in ${@}
     do
