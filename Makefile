@@ -6,8 +6,10 @@
 
 # Makefile for cmdutils
 
+DESTDIR ?= ~/bin
+
 install:
-	./linker.sh
+	./linker.sh $(DESTDIR)
 
 info:
 	./info.sh

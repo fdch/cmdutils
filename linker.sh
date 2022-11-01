@@ -6,7 +6,13 @@
 
 # Creates cmdutils symlink files into your target directory
 
-TARGETDIR=~/bin
+if [[ $1 ]]
+then
+    TARGETDIR="$1"
+else
+    echo "Provide a target directory"
+    exit 1
+fi
 
 mkdir -p $TARGETDIR
 
@@ -17,7 +23,7 @@ cd src
 for i in *
 do
     NAME=$(echo $i | cut -f 1 -d.)
-    echo Linking $i
+    echo Linking $i $CURRDIR/src/$i $TARGETDIR/$NAME
     ln -Fsv $CURRDIR/src/$i $TARGETDIR/$NAME
 done
 
