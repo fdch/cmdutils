@@ -26,3 +26,6 @@ do
 done
 
 sort -k2 $temp >> $inf
+
+# prettify
+pandoc -f markdown -t gfm -i $inf -o $inf
