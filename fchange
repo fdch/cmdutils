@@ -4,17 +4,29 @@
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Creates cmdutils symlink files into your target directory
+# Daemon to check if a file has been changed
 
-FILES=( merge.py )
+fname=$1
+id=$$
 
-TARGETDIR=~/bin
+echo "$id"
 
-mkdir -p $TARGETDIR
+function get_time()
+{
+    t=$(ls -Tla $fname  | cut -f 12  -d ' ')
+}
 
-CURRDIR=$(pwd)
+get_time
 
-for file in ${FILES[@]}
-do
-	ln -Fsv $CURRDIR/$file $TARGETDIR/$file
+o=$t
+
+while true; do
+    get_time
+    if [[ "$t" != "$o" ]]
+    then
+        echo 1
+    fi
+    o=$t
+    sleep 0.25
 done
+

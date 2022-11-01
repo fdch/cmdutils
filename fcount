@@ -1,0 +1,48 @@
+#!/bin/bash
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+
+# Count how many files are in a directory
+
+if [[ $1 ]] && [[ "$1" != "." ]]
+then
+    DIR=$1
+else
+    DIR=$(pwd)
+fi
+if [[ "$2" == "1" ]]
+then
+    REC=1
+else
+    REC=0
+fi
+
+COUNT=0
+COUNTDIR=0
+
+function fcount()
+{
+    for i in $1/*
+    do 
+        if [[ -d "$i" ]]
+        then
+            if [[ "$REC" == "1" ]]
+            then
+                fcount "$i"
+            fi
+            ((COUNTDIR++))
+        else
+            ((COUNT++))
+        fi
+    done
+}
+
+fcount "$DIR"
+
+printf "End file count for %s\n" $DIR
+printf "%d files \n" $COUNT
+printf "%d directories \n" $COUNTDIR
+
+exit

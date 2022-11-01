@@ -1,0 +1,38 @@
+#!/bin/sh
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+
+# Converts a JSON file to a CSV file
+
+python=/usr/local/bin/python3
+
+if ! which $python
+then
+    echo "python3 not found."
+    exit 1
+fi
+
+if ! $python -c "import pandas"
+then
+    echo "Pandas not found. Try running: pip3 install pandas"
+    exit 1
+fi
+
+if [[ ! $1 ]]
+then
+    echo "Input a json file to convert to csv"
+    exit 1
+else
+    FILE="$1"
+    echo "Converting $FILE to csv"
+fi
+
+COMMAND="
+import pandas as pd
+f='$FILE'
+df = pd.read_json(f)
+df.to_csv(f.replace('.json','.csv'))"
+
+$python -c "$COMMAND"

@@ -1,10 +1,9 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Searches and destroys .DS_Store files recursively (macos only)
 
-install:
-    ./linker.sh
+find . -type f -name .DS_Store -exec rm -rv {} \;

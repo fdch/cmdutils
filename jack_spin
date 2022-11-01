@@ -1,10 +1,20 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Daemon to check if JACK has been started
 
-install:
-    ./linker.sh
+while true
+do
+    if $(jack_lsp >/dev/null 2>&1)
+    then
+        jack_lsp
+        break
+    else
+        echo "Waiting for jack client..."
+        sleep 1
+    fi
+done
+

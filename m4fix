@@ -1,10 +1,12 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Fixes m4 installation issues (macos only)
 
-install:
-    ./linker.sh
+sudo rm -rf /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/m4 
+sudo rm -rf /usr/bin/m4
+brew reinstall m4
+export PATH="/usr/local/opt/m4/bin:$PATH"

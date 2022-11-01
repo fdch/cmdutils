@@ -1,0 +1,29 @@
+#!/bin/bash
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+
+# Open a file/project with a text editor (macos only)
+
+# Change editor here
+TEXTEDITOR="Visual Studio code.app"
+
+if [[ "$1" -eq "-h" ]]
+then
+    echo "usage:"
+    echo "tt myfile.txt                open single file"
+    echo "tt (or tt .)                 open current directory"
+    echo "tt * (or tt file1 file2)     open files in separate windows"
+    exit
+fi
+
+if [[ ${#@} -eq 0 ]]
+then
+    open -a "$TEXTEDITOR" "."
+else
+    for FILES in ${@}
+    do
+        open -a "$TEXTEDITOR" "$FILES"
+    done
+fi

@@ -4,17 +4,17 @@
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Creates cmdutils symlink files into your target directory
+# Daemon to check if there is an internet connection
 
-FILES=( merge.py )
-
-TARGETDIR=~/bin
-
-mkdir -p $TARGETDIR
-
-CURRDIR=$(pwd)
-
-for file in ${FILES[@]}
+while true
 do
-	ln -Fsv $CURRDIR/$file $TARGETDIR/$file
+    echo checking internet...
+    if ! ping www.google.com -c 1 >/dev/null 2>&1
+    then
+        echo Not connected, trying again...
+        sleep 1
+    else
+        echo You are online.
+        break
+    fi
 done

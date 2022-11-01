@@ -1,7 +1,11 @@
 #!/usr/local/bin/python3
-"""
-Merge one or multiple csv files flattening repeated columns
-"""
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+# -*- coding: utf-8 -*-
+""" Merge one or multiple csv files flattening repeated columns """
+
 import csv
 
 def merge_csv_files(filenames, output_path, flatten=True, sep=' '):

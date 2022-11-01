@@ -1,0 +1,28 @@
+#!/bin/bash
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+
+# Concatenates PDF files (macos only)
+
+JOIN=/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py
+
+if [[ $1 ]]
+then
+    input=`echo $1 | sed 's|/||g'`
+else
+    echo "usage: pdfconcat <input_dir_with_pdf_files> [<output_name>]"
+    exit 1
+fi
+
+if [[ $2 ]]
+then
+    output=$2
+else
+    output=$input
+fi
+
+files=$(ls $input/*.pdf | sort -V)
+
+$JOIN --output $output.pdf $files

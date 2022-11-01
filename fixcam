@@ -1,10 +1,10 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Fix macos webcam when stuck (macos only)
 
-install:
-    ./linker.sh
+echo "this will revive the camera, input pass and all is well"
+sudo killall VDCAssistant

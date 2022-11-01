@@ -1,10 +1,12 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Sets up customized preferences (macos only)
 
-install:
-    ./linker.sh
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write com.apple.Finder AppleShowAllFiles ON
+defaults write InitialKeyRepeat -int 10
+defaults write KeyRepeat -int 1

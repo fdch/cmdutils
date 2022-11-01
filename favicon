@@ -1,10 +1,14 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Make a favicon out of an image
 
-install:
-    ./linker.sh
+convert $1.png -background white \
+      \( -clone 0 -resize 16x16 \) \
+      \( -clone 0 -resize 32x32 \) \
+      \( -clone 0 -resize 48x48 \) \
+      \( -clone 0 -resize 64x64 \) \
+      -delete 0 -colors 256 $1.ico

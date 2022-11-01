@@ -1,10 +1,16 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Random MAC address generator
 
-install:
-    ./linker.sh
+def='e7:aa:40'
+prefix='d0:a6:37'
+if [[ ! $1 ]]
+then
+    printf '%s:%02X:%02X:%02X\n' ${prefix} $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256))
+else
+    printf '%s:%s\n' ${prefix} ${def}
+fi

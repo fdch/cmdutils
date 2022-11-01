@@ -1,10 +1,12 @@
-#!/usr/bin/make
+#!/bin/bash
 # **************************************************************************** #
 # This file is part of cmdutils: https://github.com/fdch/cmdutils
 # Copyright (C) 2022 Fede Camara Halac
 # **************************************************************************** #
 
-# Makefile for cmdutils
+# Lists Pure Data's available MIDI and Audio devices
 
-install:
-    ./linker.sh
+# to run pd from this script get and expand pd's alias
+shopt -s expand_aliases && source ~/.bash_alias 
+
+pd -d 4 -nogui -noaudio -listdev -nrt -noprefs -send ';pd quit'

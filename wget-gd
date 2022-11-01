@@ -1,0 +1,30 @@
+#!/bin/bash
+# **************************************************************************** #
+# This file is part of cmdutils: https://github.com/fdch/cmdutils
+# Copyright (C) 2022 Fede Camara Halac
+# **************************************************************************** #
+
+# Attempts to download a file from a gdrive file ID
+
+function gdrive_download ()
+{
+    CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://drive.google.com/uc?export=download&id=$1" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+
+    wget --load-cookies /tmp/cookies.txt "https://drive.google.com/uc?export=download&confirm=$CONFIRM&id=$1" -O $2
+
+    rm -rf /tmp/cookies.txt
+}
+
+if [[ ! $1 ]]
+then
+    echo arg1 = file id
+    exit
+fi
+
+if [[ ! $2 ]]
+then
+    echo arg2 = file name+extension
+    exit
+fi
+
+gdrive_download $1 $2
