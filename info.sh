@@ -17,13 +17,12 @@ printf "\n%s %s %s" "---------" "-------" "-------------------------------------
 
 echo > $temp
 
-for i in *
+for i in src/*
 do
-    if [[ $i == "LICENSE" ]] || [[ $i == $inf ]] || [[ $i == "README.md" ]]; then continue; fi
     name=$(echo $i | cut -f 1 -d.)
     env=$(basename $(head -n1 $i))
     text=$(head -n7 $i | tail -n1 | sed 's/^#//;s/\"\"\"$//;s/^\"\"\"//;s/^ //;s/ $//')
-    printf "%9s %7s %s\n" $name $env "$text" >> $temp
+    printf "%9s %7s %s\n" ${name/src\//} $env "$text" >> $temp
 done
 
 sort -k2 $temp >> $inf

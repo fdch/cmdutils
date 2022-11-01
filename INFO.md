@@ -1,7 +1,7 @@
 # Information file for cmdutils
 
 Copyright (C) 2022 Fede Camara Halac
-Tue  1 Nov 2022 12:57:58 CET
+Tue  1 Nov 2022 13:08:15 CET
 
      Name     Env Description
 --------- ------- --------------------------------------------------------------
@@ -11,8 +11,6 @@ Tue  1 Nov 2022 12:57:58 CET
 pdfconcat    bash Concatenates PDF files (macos only)
    fcount    bash Count how many files are in a directory
   pdstart    bash Creates a Pure Data project directory tree
-   linker    bash Creates cmdutils symlink files into your target directory
-     info    bash Creates the INFO.txt file for cmdutils
 jack_spin    bash Daemon to check if JACK has been started
   fchange    bash Daemon to check if a file has been changed
  internet    bash Daemon to check if there is an internet connection
@@ -24,7 +22,6 @@ pdlistdev    bash Lists Pure Data's available MIDI and Audio devices
    macgen    bash Random MAC address generator
     purge    bash Searches and destroys .DS_Store files recursively (macos only)
     prefs    bash Sets up customized preferences (macos only)
- Makefile    make Makefile for cmdutils
     roots python3 Get the roots of a polynomial equation
     merge python3 Merge one or multiple csv files flattening repeated columns
  parsical python3 Parse ical file and spit out a CSV list to console.

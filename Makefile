@@ -12,3 +12,6 @@ install:
 info:
 	./info.sh
 
+all:
+	make info
+	make install

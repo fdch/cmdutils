@@ -12,9 +12,12 @@ mkdir -p $TARGETDIR
 
 CURRDIR=$(pwd)
 
+cd src
+
 for i in *
 do
-    if [[ $i == "LICENSE" ]] || [[ $i == "INFO.md" ]] || [[ $i == "README.md" ]] || [[ $i == "Makefile" ]]; then continue; fi
     NAME=$(echo $i | cut -f 1 -d.)
-    ln -Fsv $CURRDIR/$i $TARGETDIR/$NAME
+    echo Linking $i
+    ln -Fsv $CURRDIR/src/$i $TARGETDIR/$NAME
 done
+
